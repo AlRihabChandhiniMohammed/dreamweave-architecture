@@ -12,7 +12,6 @@ import { BeforeAfter } from "@/components/site/before-after";
 import { ClientJourney } from "@/components/site/client-journey";
 import { Testimonials } from "@/components/site/testimonials";
 import { Faq } from "@/components/site/faq";
-import { Contact } from "@/components/site/contact";
 import { FloatingContact } from "@/components/site/floating-contact";
 import { Footer } from "@/components/site/footer";
 import { faqs, services } from "@/lib/site-content";
@@ -82,7 +81,6 @@ function Index() {
         <ClientJourney />
         <Testimonials />
         <Faq />
-        <Contact />
       </main>
       <Footer />
       <FloatingContact />

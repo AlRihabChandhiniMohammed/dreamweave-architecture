@@ -65,7 +65,7 @@ export function Hero() {
           className="mt-10 flex flex-wrap items-center gap-4"
         >
           <a
-            href="#contact"
+            href="/request-consultation"
             className="group relative overflow-hidden bg-ink-foreground px-8 py-4 text-[0.72rem] uppercase tracking-[0.2em] text-foreground"
           >
             <span className="relative z-10 transition-colors duration-500 group-hover:text-ink-foreground">

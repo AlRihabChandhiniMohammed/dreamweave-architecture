@@ -79,7 +79,7 @@ export function Turnkey() {
         <Reveal delay={0.1}>
           <div className="mt-12 flex flex-wrap items-center gap-6">
             <a
-              href="#contact"
+              href="/request-consultation"
               className="group relative overflow-hidden border border-ink-foreground/40 px-8 py-4 text-[0.72rem] uppercase tracking-[0.2em] text-ink-foreground"
             >
               <span className="relative z-10 transition-colors duration-500 group-hover:text-foreground">

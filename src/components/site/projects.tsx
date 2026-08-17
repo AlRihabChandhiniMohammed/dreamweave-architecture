@@ -161,7 +161,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           </div>
 
           <a
-            href="#contact"
+            href="/request-consultation"
             onClick={onClose}
             className="mt-10 inline-block bg-foreground px-8 py-4 text-[0.7rem] uppercase tracking-[0.2em] text-primary-foreground transition-colors hover:bg-accent"
           >

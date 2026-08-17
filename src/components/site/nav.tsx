@@ -63,7 +63,7 @@ export function SiteNav() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#contact"
+            href="/request-consultation"
             className={`hidden border px-5 py-3 text-[0.7rem] uppercase tracking-[0.2em] transition-all duration-300 lg:inline-block ${
               scrolled
                 ? "border-foreground/25 text-foreground hover:bg-foreground hover:text-primary-foreground"
@@ -128,7 +128,7 @@ export function SiteNav() {
               ))}
             </ul>
             <a
-              href="#contact"
+              href="/request-consultation"
               onClick={() => setOpen(false)}
               className="mt-10 block bg-foreground px-6 py-4 text-center text-[0.7rem] uppercase tracking-[0.2em] text-primary-foreground"
             >

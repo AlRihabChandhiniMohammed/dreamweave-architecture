@@ -2,7 +2,7 @@ import { MessageCircle } from "lucide-react";
 import { company } from "@/lib/site-content";
 
 export function FloatingContact() {
-  const href = company.phoneRaw ? `https://wa.me/${company.phoneRaw}` : "#contact";
+  const href = company.phoneRaw ? `https://wa.me/${company.phoneRaw}` : "/request-consultation";
 
   return (
     <a
