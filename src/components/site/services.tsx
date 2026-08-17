@@ -1,12 +1,66 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { services } from "@/lib/site-content";
 import { Reveal, SectionHeading } from "./reveal";
 
+const AUTOPLAY_MS = 3000;
+
 export function Services() {
   const [active, setActive] = useState(0);
+  const listRef = useRef<HTMLUListElement>(null);
   const featured = services[active] ?? services[0]!;
+
+  const next = useCallback(() => {
+    const list = listRef.current;
+    if (!list) return;
+    const card = list.querySelector<HTMLElement>("li:not(:last-child)");
+    const gap = 20;
+    if (card) {
+      const nextLeft = card.offsetLeft + card.offsetWidth + gap;
+      list.scrollTo({ left: nextLeft, behavior: "smooth" });
+    } else {
+      list.scrollTo({ left: 0, behavior: "smooth" });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || window.matchMedia("(min-width: 1024px)").matches) {
+      return;
+    }
+    let paused = false;
+    const pause = () => {
+      paused = true;
+    };
+    const resume = () => {
+      paused = false;
+    };
+    const list = listRef.current;
+    list?.addEventListener("pointerdown", pause);
+    list?.addEventListener("wheel", pause);
+    window.addEventListener("pointerup", resume);
+    window.addEventListener("pointercancel", resume);
+    const id = window.setInterval(() => {
+      if (paused) return;
+      const { scrollLeft, scrollWidth, clientWidth } = listRef.current ?? {
+        scrollLeft: 0,
+        scrollWidth: 0,
+        clientWidth: 0,
+      };
+      if (scrollLeft + clientWidth >= scrollWidth - 8) {
+        listRef.current?.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        next();
+      }
+    }, AUTOPLAY_MS);
+    return () => {
+      window.clearInterval(id);
+      list?.removeEventListener("pointerdown", pause);
+      list?.removeEventListener("wheel", pause);
+      window.removeEventListener("pointerup", resume);
+      window.removeEventListener("pointercancel", resume);
+    };
+  }, [next]);
 
   return (
     <section id="services" className="bg-secondary/50 py-24 sm:py-32">
@@ -67,7 +121,10 @@ export function Services() {
           </div>
 
           {/* Service list — horizontal carousel on mobile, list on desktop */}
-          <ul className="mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:thin] lg:col-span-6 lg:mt-0 lg:block lg:gap-0 lg:overflow-visible lg:pb-0 lg:snap-none">
+          <ul
+            ref={listRef}
+            className="mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:thin] lg:col-span-6 lg:mt-0 lg:block lg:gap-0 lg:overflow-visible lg:pb-0 lg:snap-none"
+          >
             {services.map((service, i) => (
               <Reveal
                 as="li"
