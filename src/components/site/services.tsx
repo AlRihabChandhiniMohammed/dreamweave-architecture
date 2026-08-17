@@ -66,17 +66,22 @@ export function Services() {
             </div>
           </div>
 
-          {/* Service list */}
-          <ul className="lg:col-span-6">
+          {/* Service list — horizontal carousel on mobile, list on desktop */}
+          <ul className="mt-14 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:thin] lg:col-span-6 lg:mt-0 lg:block lg:gap-0 lg:overflow-visible lg:pb-0 lg:snap-none">
             {services.map((service, i) => (
-              <Reveal as="li" key={service.number} delay={Math.min(i * 0.03, 0.24)}>
+              <Reveal
+                as="li"
+                key={service.number}
+                delay={Math.min(i * 0.03, 0.24)}
+                className="w-[78vw] max-w-[330px] shrink-0 snap-center lg:w-auto lg:max-w-none lg:shrink lg:snap-none"
+              >
                 <button
                   type="button"
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
                   onClick={() => setActive(i)}
                   aria-current={active === i}
-                  className={`group relative block w-full border-b border-border py-6 text-left transition-all duration-500 lg:py-5 ${
+                  className={`group relative block w-full border border-border bg-background text-left transition-all duration-500 lg:border-0 lg:border-b lg:bg-transparent lg:py-5 ${
                     active === i ? "lg:pl-4" : "lg:pl-0"
                   }`}
                 >
@@ -85,7 +90,19 @@ export function Services() {
                       active === i ? "opacity-100" : "opacity-0"
                     }`}
                   />
-                  <div className="flex items-start gap-5">
+                  {/* Mobile / tablet image */}
+                  <span className="block aspect-[16/10] overflow-hidden lg:hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      width={1024}
+                      height={1280}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
+                    />
+                  </span>
+                  <div className="flex items-start gap-5 p-5 lg:p-0">
                     <span
                       className={`mt-1 font-display text-sm tabular-nums transition-colors duration-500 ${
                         active === i ? "text-accent" : "text-muted-foreground"
@@ -112,19 +129,6 @@ export function Services() {
                       </span>
                     </span>
                   </div>
-
-                  {/* Mobile / tablet image */}
-                  <span className="mt-5 block aspect-[16/10] overflow-hidden lg:hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      width={1024}
-                      height={1280}
-                      loading="lazy"
-                      decoding="async"
-                      className="h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
-                    />
-                  </span>
                 </button>
               </Reveal>
             ))}
