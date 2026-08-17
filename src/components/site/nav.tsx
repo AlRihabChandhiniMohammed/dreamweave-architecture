@@ -23,9 +23,11 @@ export function SiteNav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "glass-panel py-3 shadow-[0_1px_0_0_var(--border)]"
-          : "border-b border-transparent py-6"
+        open
+          ? "bg-background py-3 shadow-[0_1px_0_0_var(--border)]"
+          : scrolled
+            ? "glass-panel py-3 shadow-[0_1px_0_0_var(--border)]"
+            : "border-b border-transparent py-6"
       }`}
     >
       <nav
@@ -103,7 +105,8 @@ export function SiteNav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-x-0 top-[68px] bottom-0 bg-background px-6 pt-8 lg:hidden"
+            style={{ backgroundColor: "var(--background)", zIndex: 9999 }}
+            className="fixed inset-x-0 top-[68px] bottom-0 px-6 pt-8 opacity-100 backdrop-blur-none lg:hidden"
           >
             <ul className="flex flex-col">
               {navLinks.map((link, i) => (
