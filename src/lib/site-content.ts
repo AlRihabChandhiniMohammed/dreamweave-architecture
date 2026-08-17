@@ -15,12 +15,6 @@ import svcPainting from "@/assets/svc-painting.jpg";
 import svcLandscaping from "@/assets/svc-landscaping.jpg";
 import svcApprovals from "@/assets/svc-approvals.jpg";
 import svcTurnkey from "@/assets/svc-turnkey.jpg";
-import proj1 from "@/assets/proj-1.jpg";
-import proj2 from "@/assets/proj-2.jpg";
-import proj3 from "@/assets/proj-3.jpg";
-import proj4 from "@/assets/proj-4.jpg";
-import proj5 from "@/assets/proj-5.jpg";
-import proj6 from "@/assets/proj-6.jpg";
 import matConcrete from "@/assets/mat-concrete.jpg";
 import matWood from "@/assets/mat-wood.jpg";
 import matTiles from "@/assets/mat-tiles.jpg";
@@ -57,7 +51,6 @@ export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
   { label: "Why Us", href: "#why-us" },
   { label: "Contact", href: "/request-consultation" },
 ];
@@ -155,132 +148,6 @@ export const turnkeyJourney = [
   "Painting & Finishing",
   "Landscaping",
   "Final Handover",
-];
-
-export type Project = {
-  id: string;
-  name: string;
-  category: string;
-  location: string;
-  type: string;
-  area: string;
-  architecture: string;
-  construction: string;
-  interior: string;
-  description: string;
-  image: string;
-  gallery: string[];
-  span: string;
-};
-
-/** Placeholder project data — replace names, locations and areas with real records. */
-export const projectCategories = [
-  "All",
-  "Luxury Villas",
-  "Independent Houses",
-  "Modern Homes",
-  "Interiors",
-  "Renovations",
-  "Landscapes",
-];
-
-export const projects: Project[] = [
-  {
-    id: "p1",
-    name: "[Project Name 01]",
-    category: "Luxury Villas",
-    location: "[Location]",
-    type: "Luxury Villa",
-    area: "[XXXX sq. ft.]",
-    architecture: "In-house architectural design",
-    construction: "Complete civil & structural execution",
-    interior: "Full interior package",
-    description:
-      "A placeholder description of a contemporary villa developed end to end — architecture, structure, services, interiors and landscape delivered by a single coordinated team.",
-    image: proj1,
-    gallery: [proj1, proj4, proj6],
-    span: "lg:col-span-7 lg:row-span-2",
-  },
-  {
-    id: "p2",
-    name: "[Project Name 02]",
-    category: "Independent Houses",
-    location: "[Location]",
-    type: "Independent House",
-    area: "[XXXX sq. ft.]",
-    architecture: "Floor plans, elevations and 3D concepts",
-    construction: "Foundation to finishing",
-    interior: "Selected interior scope",
-    description:
-      "Placeholder description for an independent residence planned around family living, natural light and ventilation.",
-    image: proj2,
-    gallery: [proj2, proj5, proj4],
-    span: "lg:col-span-5",
-  },
-  {
-    id: "p3",
-    name: "[Project Name 03]",
-    category: "Modern Homes",
-    location: "[Location]",
-    type: "Modern Home",
-    area: "[XXXX sq. ft.]",
-    architecture: "Contemporary tropical design language",
-    construction: "Turnkey execution",
-    interior: "Interiors and finishes",
-    description:
-      "Placeholder description for a modern home with courtyards, textured masonry screens and layered outdoor spaces.",
-    image: proj3,
-    gallery: [proj3, proj6, proj1],
-    span: "lg:col-span-5",
-  },
-  {
-    id: "p4",
-    name: "[Project Name 04]",
-    category: "Interiors",
-    location: "[Location]",
-    type: "Interior Project",
-    area: "[XXXX sq. ft.]",
-    architecture: "Interior spatial planning",
-    construction: "Site coordination and civil works",
-    interior: "Complete interior design and execution",
-    description:
-      "Placeholder description for an interior project focused on material honesty, joinery detail and calm lighting.",
-    image: proj4,
-    gallery: [proj4, proj6, proj2],
-    span: "lg:col-span-6",
-  },
-  {
-    id: "p5",
-    name: "[Project Name 05]",
-    category: "Renovations",
-    location: "[Location]",
-    type: "Renovation",
-    area: "[XXXX sq. ft.]",
-    architecture: "Adaptive redesign of an existing structure",
-    construction: "Structural strengthening and rebuild",
-    interior: "Refreshed interiors",
-    description:
-      "Placeholder description for a renovation that reworked circulation, openings and finishes while retaining the existing structure.",
-    image: proj5,
-    gallery: [proj5, proj3, proj1],
-    span: "lg:col-span-6",
-  },
-  {
-    id: "p6",
-    name: "[Project Name 06]",
-    category: "Landscapes",
-    location: "[Location]",
-    type: "Landscape",
-    area: "[XXXX sq. ft.]",
-    architecture: "Landscape master plan",
-    construction: "Hardscape, drainage and lighting",
-    interior: "Outdoor furnishing coordination",
-    description:
-      "Placeholder description for a landscape package including pathways, planting, water features and exterior lighting.",
-    image: proj6,
-    gallery: [proj6, proj3, proj5],
-    span: "lg:col-span-12",
-  },
 ];
 
 export const materials = [
