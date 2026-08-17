@@ -73,7 +73,7 @@ export function CinematicGallery() {
     <section ref={ref} className="overflow-hidden bg-ink py-24 text-ink-foreground sm:py-32">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
         <Reveal>
-          <p className="eyebrow text-ink-foreground/55">Selected Frames</p>
+          <p className="eyebrow text-ink-foreground/55">Projects</p>
         </Reveal>
         <Reveal delay={0.08}>
           <h2 className="mt-5 max-w-3xl text-[clamp(1.9rem,4.6vw,3.5rem)] leading-[1.05] text-ink-foreground">
