@@ -57,7 +57,6 @@ export const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
   { label: "Projects", href: "#projects" },
   { label: "Why Us", href: "#why-us" },
   { label: "Contact", href: "#contact" },
@@ -156,54 +155,6 @@ export const turnkeyJourney = [
   "Painting & Finishing",
   "Landscaping",
   "Final Handover",
-];
-
-export const processSteps = [
-  {
-    number: "01",
-    title: "Consultation",
-    description: "Understand your requirements, lifestyle, budget and vision.",
-  },
-  {
-    number: "02",
-    title: "Site Assessment",
-    description: "Evaluate the site, surroundings, orientation and feasibility.",
-  },
-  {
-    number: "03",
-    title: "Architectural Planning",
-    description: "Develop layouts, elevations and design concepts.",
-  },
-  {
-    number: "04",
-    title: "Structural Engineering",
-    description: "Create safe and optimized structural plans.",
-  },
-  {
-    number: "05",
-    title: "Approvals & Documentation",
-    description: "Handle necessary permissions and documentation.",
-  },
-  {
-    number: "06",
-    title: "Construction",
-    description: "Execute civil, structural, electrical and plumbing works.",
-  },
-  {
-    number: "07",
-    title: "Interiors & Finishing",
-    description: "Complete interiors, painting, fixtures and finishing.",
-  },
-  {
-    number: "08",
-    title: "Final Inspection",
-    description: "Quality checks and final corrections.",
-  },
-  {
-    number: "09",
-    title: "Handover",
-    description: "Deliver your completed dream home.",
-  },
 ];
 
 export type Project = {
