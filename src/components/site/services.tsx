@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { services } from "@/lib/site-content";
@@ -9,20 +9,8 @@ const AUTOPLAY_MS = 3000;
 export function Services() {
   const [active, setActive] = useState(0);
   const listRef = useRef<HTMLUListElement>(null);
+  const indexRef = useRef(0);
   const featured = services[active] ?? services[0]!;
-
-  const next = useCallback(() => {
-    const list = listRef.current;
-    if (!list) return;
-    const card = list.querySelector<HTMLElement>("li:not(:last-child)");
-    const gap = 20;
-    if (card) {
-      const nextLeft = card.offsetLeft + card.offsetWidth + gap;
-      list.scrollTo({ left: nextLeft, behavior: "smooth" });
-    } else {
-      list.scrollTo({ left: 0, behavior: "smooth" });
-    }
-  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined" || window.matchMedia("(min-width: 1024px)").matches) {
@@ -41,17 +29,16 @@ export function Services() {
     window.addEventListener("pointerup", resume);
     window.addEventListener("pointercancel", resume);
     const id = window.setInterval(() => {
-      if (paused) return;
-      const { scrollLeft, scrollWidth, clientWidth } = listRef.current ?? {
-        scrollLeft: 0,
-        scrollWidth: 0,
-        clientWidth: 0,
-      };
-      if (scrollLeft + clientWidth >= scrollWidth - 8) {
-        listRef.current?.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        next();
-      }
+      if (paused || !listRef.current) return;
+      const cards = Array.from(listRef.current.querySelectorAll<HTMLElement>("li"));
+      if (cards.length === 0) return;
+      const gap = 20;
+      const cardWidth = cards[0]!.offsetWidth + gap;
+      indexRef.current = (indexRef.current + 1) % cards.length;
+      listRef.current.scrollTo({
+        left: indexRef.current * cardWidth,
+        behavior: "smooth",
+      });
     }, AUTOPLAY_MS);
     return () => {
       window.clearInterval(id);
@@ -60,7 +47,7 @@ export function Services() {
       window.removeEventListener("pointerup", resume);
       window.removeEventListener("pointercancel", resume);
     };
-  }, [next]);
+  }, []);
 
   return (
     <section id="services" className="bg-secondary/50 py-24 sm:py-32">
